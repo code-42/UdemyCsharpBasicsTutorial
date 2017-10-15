@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace ExercisesSection6Lecture55
@@ -9,7 +10,7 @@ namespace ExercisesSection6Lecture55
         static void Main(string[] args)
         {
             // Console.WriteLine("Hello World!");
-            Exercise4();
+            Exercise5();
         }
 
         /* 
@@ -79,7 +80,6 @@ namespace ExercisesSection6Lecture55
         public static void Exercise4()
         {
             var numbers = new List<int>();
-
             while (true)
             {
                 Console.WriteLine("Enter a number (or type Quit to exit): ");
@@ -103,5 +103,37 @@ namespace ExercisesSection6Lecture55
 
         }
 
+        // 5- Write a program and ask the user to supply a list of comma separated numbers (e.g 5, 1, 9, 2, 10). If the list is empty or includes less than 5 numbers, display "Invalid List" and ask the user to re-try; otherwise, display the 3 smallest numbers in the list.
+        public static void Exercise5()
+        {
+            string[] numbers;
+            while (true)
+            {
+                Console.WriteLine("Enter a list of numbers separated by commas: ");
+                var input = Console.ReadLine();
+
+                if (!String.IsNullOrWhiteSpace(input))
+                {
+                    numbers = input.Split(',');
+                    if (numbers.Length >= 5)
+                        break;
+                }
+                Console.WriteLine("Invalid List, please re-try");
+            }
+
+            var numList = new List<int>();
+            foreach (var str in numbers)
+            {
+                var number = Convert.ToInt32(str);
+                numList.Add(number);
+            }
+
+            numList.Sort();
+            var shortList = numList.Take(3);
+            foreach (var numbr in shortList)
+            {
+                Console.WriteLine(numbr);
+            }  
+        }
     }
 }
