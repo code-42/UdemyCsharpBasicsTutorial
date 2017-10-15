@@ -9,7 +9,7 @@ namespace ExercisesSection6Lecture55
         static void Main(string[] args)
         {
             // Console.WriteLine("Hello World!");
-            Exercise3();
+            Exercise4();
         }
 
         /* 
@@ -36,9 +36,9 @@ namespace ExercisesSection6Lecture55
             }
 
             foreach (var name in names)
-                {
-                   Console.WriteLine(name); 
-                }
+            {
+                Console.WriteLine(name); 
+            }
         }
 
         public static void Exercise2()
@@ -71,11 +71,37 @@ namespace ExercisesSection6Lecture55
             Console.WriteLine();
             foreach (var num in numArr)
             {
-               Console.WriteLine(num); 
+                Console.WriteLine(num);
             }
-            
-            
-            
         }
+
+        // 4- Write a program and ask the user to continuously enter a number or type "Quit" to exit. The list of numbers may include duplicates. Display the unique numbers that the user has entered.
+        public static void Exercise4()
+        {
+            var numbers = new List<int>();
+
+            while (true)
+            {
+                Console.WriteLine("Enter a number (or type Quit to exit): ");
+                var input = Console.ReadLine();
+
+                if (input.ToLower() == "q" || String.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine("input was " + input);
+                    break;
+                }
+                    
+                var number = int.Parse(input);
+                numbers.Add(number);
+            }
+
+            var uniqueNumbers = numbers.Distinct();
+            foreach (var number in uniqueNumbers)
+            {
+                Console.WriteLine(number);
+            }
+
+        }
+
     }
 }
