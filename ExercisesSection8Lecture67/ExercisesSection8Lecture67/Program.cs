@@ -13,7 +13,8 @@ namespace ExercisesSection8Lecture67
             Console.WriteLine(asc);
             //Exercise1();
             //Exercise2();
-            Exercise3();
+            //Exercise3();
+            Exercise4();
         }
 
         // 1- Write a program and ask the user to enter a few numbers separated by a hyphen. Work out if the numbers are consecutive. For example, if the input is "5-6-7-8-9" or "20-19-18-17-16", display a message: "Consecutive"; otherwise, display "Not Consecutive".
@@ -93,9 +94,34 @@ namespace ExercisesSection8Lecture67
                 return;
             }
 
-            //var time = new DateTime();
-            //time = DateTime.Parse(input);
             Console.WriteLine("Ok");
+        }
+
+        // 4- Write a program and ask the user to enter a few words separated by a space. Use the words to create a variable name with PascalCase. For example, if the user types: "number of students", display "NumberOfStudents". Make sure that the program is not dependent on the input. So, if the user types "NUMBER OF STUDENTS", the program should still display "NumberOfStudents". If the user doesn't supply any words, display "Error".
+        public static void Exercise4()
+        {
+            Console.WriteLine("Enter a few words separated by a space: ");
+            var input = Console.ReadLine();
+
+            if (String.IsNullOrWhiteSpace(input))
+            {
+                Console.WriteLine("Error");
+                return;
+            }
+
+            var inList = new List<string>();
+            foreach (var ch in input.Split(' '))
+            {
+                inList.Add(ch.ToLower());
+            }
+
+            var variableName = "";
+            foreach (var word in inList)
+            {
+                variableName += (word.Substring(0, 1).ToUpper() + "" + word.Substring(1));
+            }
+            Console.WriteLine();
+            Console.WriteLine(variableName);
         }
     }
 }
