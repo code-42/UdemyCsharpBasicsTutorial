@@ -12,8 +12,8 @@ namespace ExercisesSection8Lecture68
             //Exercise1();
             //Exercise2();
             //Exercise3();
-            Exercise4();
-            //Exercise5();
+            //Exercise4();
+            Exercise5();
         }
 
         // 1- Write a program and ask the user to enter a few numbers separated by a hyphen. Work out if the numbers are consecutive. For example, if the input is "5-6-7-8-9" or "20-19-18-17-16", display a message: "Consecutive"; otherwise, display "Not Consecutive".
@@ -152,11 +152,18 @@ namespace ExercisesSection8Lecture68
         }
 
         // 5- Write a program and ask the user to enter an English word. Count the number of vowels (a, e, o, u, i) in the word. So, if the user enters "inadequate", the program should display 6 on the console.
+        // ver 2 - move the business logic out of the main procedure and extract a method from the code.
         public static void Exercise5()
         {
             Console.WriteLine("Enter an English word: ");
             var input = Console.ReadLine().ToLower();
 
+
+            Console.WriteLine(CountVowels(input));
+        }
+
+        public static int CountVowels(string input)
+        {
             string[] vowels = { "a", "e", "o", "u", "i" };
             char[] charArray = input.ToCharArray();
             int count = 0;
@@ -170,7 +177,7 @@ namespace ExercisesSection8Lecture68
                     }
                 }
             }
-            Console.WriteLine(count);
+            return count;
         }
     }
 }
