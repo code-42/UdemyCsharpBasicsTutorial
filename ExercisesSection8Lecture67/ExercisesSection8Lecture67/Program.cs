@@ -10,8 +10,8 @@ namespace ExercisesSection8Lecture68
         static void Main(string[] args)
         {
             //Exercise1();
-            Exercise2();
-            //Exercise3();
+            //Exercise2();
+            Exercise3();
             //Exercise4();
             //Exercise5();
         }
@@ -80,31 +80,40 @@ namespace ExercisesSection8Lecture68
             }
         }
         // 3- Write a program and ask the user to enter a time value in the 24-hour time format (e.g. 19:00). A valid time should be between 00:00 and 23:59. If the time is valid, display "Ok"; otherwise, display "Invalid Time". If the user doesn't provide any values, consider it as invalid time.
+        // ver 2 - move the business logic out of the main procedure and extract a method from the code.
         public static void Exercise3()
         {
             Console.WriteLine("enter a time value in the 24-hour time format (e.g. 19:00): ");
             var input = Console.ReadLine();
+
+            string isValid = CheckValidTime(input);
+            Console.WriteLine(isValid);
+        }
+
+        public static string CheckValidTime(string input)
+        {
             if (String.IsNullOrWhiteSpace(input))
             {
-                Console.WriteLine("Invalid Time");
-                return;
+                // Console.WriteLine("Invalid Time");
+                return "Invalid Time";
             }
             if (input.IndexOf(':') == -1)
             {
-                Console.WriteLine("Invalid Time");
-                return;
+                // Console.WriteLine("Invalid Time");
+                return "Invalid Time";
             }
 
             var timeArr = input.Split(':');
             var hour = Convert.ToByte(timeArr[0]);
             var min = Convert.ToByte(timeArr[1]);
-            if (hour > 24  || (hour < 24 && min > 59))
+            if (hour > 24 || (hour < 24 && min > 59))
             {
-                Console.WriteLine("Invalid Time");
-                return;
+                // Console.WriteLine("Invalid Time");
+                return "Invalid Time";
             }
 
-            Console.WriteLine("Ok");
+            //Console.WriteLine("Ok");
+            return "Ok";
         }
 
         // 4- Write a program and ask the user to enter a few words separated by a space. Use the words to create a variable name with PascalCase. For example, if the user types: "number of students", display "NumberOfStudents". Make sure that the program is not dependent on the input. So, if the user types "NUMBER OF STUDENTS", the program should still display "NumberOfStudents". If the user doesn't supply any words, display "Error".
