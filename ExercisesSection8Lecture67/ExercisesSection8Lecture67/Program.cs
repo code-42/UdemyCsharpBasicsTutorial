@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
-namespace ExercisesSection8Lecture67
+namespace ExercisesSection8Lecture68
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Exercise1();
-            //Exercise2();
+            //Exercise1();
+            Exercise2();
             //Exercise3();
             //Exercise4();
             //Exercise5();
         }
 
         // 1- Write a program and ask the user to enter a few numbers separated by a hyphen. Work out if the numbers are consecutive. For example, if the input is "5-6-7-8-9" or "20-19-18-17-16", display a message: "Consecutive"; otherwise, display "Not Consecutive".
+        // ver 2 - move the business logic out of the main procedure and create a method that returns a result to a variable.
         public static void Exercise1()
         {
             Console.WriteLine("Enter a few numbers separated by a hyphen (ex. 5-6-7-8): ");
@@ -53,6 +54,7 @@ namespace ExercisesSection8Lecture67
         }
 
         // 2- Write a program and ask the user to enter a few numbers separated by a hyphen. If the user simply presses Enter, without supplying an input, exit immediately; otherwise, check to see if there are duplicates. If so, display "Duplicate" on the console.
+        // ver 2 - move the business logic out of the main procedure and create a method that returns a result to a variable.
         public static void Exercise2()
         {
             Console.WriteLine("Enter a few numbers separated by a hyphen (ex. 5-6-7-8): ");
@@ -60,6 +62,11 @@ namespace ExercisesSection8Lecture67
             if (String.IsNullOrWhiteSpace(input))
                 return;
 
+            CheckForDuplicates(input);
+        }
+
+        public static void CheckForDuplicates(string input)
+        {
             var numbers = new List<int>();
             foreach (var number in input.Split('-'))
             {
@@ -70,10 +77,8 @@ namespace ExercisesSection8Lecture67
                     break;
                 }
                 numbers.Add(Convert.ToInt32(number));
-                
             }
         }
-
         // 3- Write a program and ask the user to enter a time value in the 24-hour time format (e.g. 19:00). A valid time should be between 00:00 and 23:59. If the time is valid, display "Ok"; otherwise, display "Invalid Time". If the user doesn't provide any values, consider it as invalid time.
         public static void Exercise3()
         {
